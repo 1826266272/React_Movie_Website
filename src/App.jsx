@@ -3,8 +3,8 @@ import Search from './components/search';
 import Spinner from './components/spinner';
 import MovieCard from './components/MovieCard';
 import { useDebounce } from 'react-use';
-import { updateSearchCount } from './appWrite';
-import { getTrendingMovies } from './appWrite';
+import { updateSearchCount } from './supabase';
+import { getTrendingMovies } from './supabase';
 
 const API_BASE_URL = "https://api.themoviedb.org/3/";
 
@@ -92,14 +92,14 @@ const App = () => {
           <header>
 
             <img src="./hero.png" alt="Hero-banner"/>
-            <h1>Find <span className="text-gradient">Movies</span> you can enjoy</h1>
+            <h1>Find <span className="text-grad ient">Movies</span> you can enjoy</h1>
             
             {trendingMovies.length > 0 && (
               <section className='trending'>
                 <h2>Trending Movies</h2>
                 <ul>
                   {trendingMovies.map((movie, index) => (
-                    <li key={movie.$id}>
+                    <li key={movie.id}>
                       <p>{index + 1}</p>
                       <img 
                         src={movie.poster_url} 
@@ -125,7 +125,7 @@ const App = () => {
                 <p className='text-red-500'>{fetchError}</p>
               ) :
               <ul>
-                {movieList.map((movie) => (
+                {movieList.map((movie) => ( 
                   <MovieCard key={movie.id} movie={movie} />
                 ))}
               </ul>
