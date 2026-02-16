@@ -1,6 +1,6 @@
 import { useState,useEffect, use } from 'react';
-import Search from './components/search';
-import Spinner from './components/spinner';
+import Search from './components/Search';
+import Spinner from './components/Spinner';
 import MovieCard from './components/MovieCard';
 import { useDebounce } from 'react-use';
 import { updateSearchCount } from './supabase';
@@ -50,7 +50,7 @@ const App = () => {
         setMovieList([]);
         return;
       }
-      setMovieList(data.results || []);
+      setMovieList(data.results || []); 
 
       if(query && data.results.length > 0)
       {
